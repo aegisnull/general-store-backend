@@ -1,0 +1,15 @@
+{
+  "name": "general-store-backend",
+  "version": "1.0.0",
+  "description": "Capstone project for Full Stack ITJ Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Tellez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
+  }
+}
