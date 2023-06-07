@@ -12,6 +12,16 @@ exports.getProducts = async (req, res) => {
   }
 };
 
+exports.getProductById = async (req, res) => {
+  try {
+    let product = await ProductService.getProductById(req.params.id);
+    res.json({ product: product });
+  } catch (error) {
+    console.error("error", error);
+    res.status(404).json({ message: "Product was not found" });
+  }
+};
+
 exports.createProduct = async (req, res, next) => {
   try {
     let productSaved = await ProductService.createProduct(req.body);
