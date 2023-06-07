@@ -2,16 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const ProductRoutes = require("./src/routes/products");
 const app = express();
+require("dotenv").config();
 
 app.use(express.json());
 app.use("/products", ProductRoutes);
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://generalstore:generalstore@cluster0.wtowomx.mongodb.net/?retryWrites=true&w=majority"
-    );
-    app.listen(3000, () => {
+    await mongoose.connect(process.env.DATABASE_URL);
+    app.listen(process.env.PORT, () => {
       console.log("Server is running");
     });
   } catch (error) {
