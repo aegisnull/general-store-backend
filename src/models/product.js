@@ -8,3 +8,7 @@ const productSchema = new Schema({
   isNew: { type: Boolean, required: true },
   description: { type: String, required: true },
 });
+
+const Product = mongoose.model("Product", productSchema);
+
+module.exports = Product;
