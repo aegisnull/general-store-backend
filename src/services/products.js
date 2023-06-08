@@ -20,3 +20,5 @@ exports.createProduct = async (requestBody) => {
   });
   return await product.save();
 };
+
+exports.updateProduct = async (req, res) => {};

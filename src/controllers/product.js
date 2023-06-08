@@ -33,3 +33,5 @@ exports.createProduct = async (req, res, next) => {
     res.status(400).json({ message: "Product was not created" });
   }
 };
+
+exports.updateProduct = async (req, res) => {};
