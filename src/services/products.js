@@ -21,4 +21,10 @@ exports.createProduct = async (requestBody) => {
   return await product.save();
 };
 
-exports.updateProduct = async (req, res) => {};
+exports.updateProduct = async (id, productData) => {
+  return await Product.findByIdAndUpdate(id, productData, {
+    new: true,
+  })
+    .lean()
+    .exec();
+};
