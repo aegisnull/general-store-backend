@@ -34,6 +34,9 @@ describe("When calling update Product Controller", () => {
       status: jest.fn().mockReturnThis(),
       json: jest.fn().mockReturnThis(),
     };
+
+    global.console = { log: jest.fn(), error: jest.fn() };
+
     ProductService.updateProduct = jest.fn().mockResolvedValue(updatedProduct);
   });
 
@@ -43,5 +46,36 @@ describe("When calling update Product Controller", () => {
 
     // Assert
     expect(ProductService.updateProduct).toHaveBeenCalledWith(id, productData);
+  });
+
+  test("Should call res.status with a 200 status code", async () => {
+    // Act
+    await ProjectController.updateProduct(req, res);
+
+    // Assert
+    expect(res.status).toHaveBeenCalledWith(200);
+  });
+
+  test("Should call res.json with a success message and updated product", async () => {
+    // Act
+    await ProjectController.updateProduct(req, res);
+
+    // Assert
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Product updated",
+      updatedProduct,
+    });
+  });
+
+  test("Should call res.status with a 500 status code if ProductService.updateProduct throws an error", async () => {
+    // Arrange
+    const error = new Error();
+    ProductService.updateProduct = jest.fn().mockRejectedValue(error);
+
+    // Act
+    await ProjectController.updateProduct(req, res);
+
+    // Assert
+    expect(res.status).toHaveBeenCalledWith(500);
   });
 });

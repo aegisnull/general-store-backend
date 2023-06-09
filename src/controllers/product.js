@@ -34,4 +34,14 @@ exports.createProduct = async (req, res, next) => {
   }
 };
 
-exports.updateProduct = async (req, res) => {};
+exports.updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const productData = req.body;
+    const updatedProduct = await ProductService.updateProduct(id, productData);
+    res.status(200).json({ message: "Product updated", updatedProduct });
+  } catch (error) {
+    console.error("error", error);
+    res.status(500).json({ message: "Product was not updated" });
+  }
+};
