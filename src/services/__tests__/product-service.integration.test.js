@@ -81,3 +81,42 @@ describe("GET /products", () => {
     expect(products.length).toBe(initialProducts.length);
   });
 });
+
+describe("POST /projects", () => {
+  test("Should create a new project in DB and return a created status code", async () => {
+    const newProduct = {
+      name: "Colombian Dark Roast",
+      image:
+        "https://cdn.shopify.com/s/files/1/0674/3411/9456/products/shop-8.png?v=1675662787&width=720",
+      price: 12.99,
+      isNew: false,
+      description:
+        "Rich and flavorful coffee made from the finest Colombian coffee beans. It has a smooth, medium body and a deep, chocolatey flavor. It is perfect for those who enjoy a bold cup of coffee.",
+    };
+
+    const response = await request(app).post("/products").send(newProduct);
+    expect(response.status).toBe(201);
+    expect(response.body.productSaved).toMatchObject(newProduct);
+    await Product.findByIdAndDelete(response.body.productSaved._id);
+  });
+
+  test("Should return a 400 code and an error message when required fields are missing", async () => {
+    const testProduct = {
+      name: "Colombian Dark Roast",
+      image:
+        "https://cdn.shopify.com/s/files/1/0674/3411/9456/products/shop-8.png?v=1675662787&width=720",
+      price: 12.99,
+      isNew: false,
+      description:
+        "Rich and flavorful coffee made from the finest Colombian coffee beans. It has a smooth, medium body and a deep, chocolatey flavor. It is perfect for those who enjoy a bold cup of coffee.",
+    };
+
+    const { name, ...incompleteProduct } = testProduct;
+    const response = await request(app)
+      .post("/products")
+      .send(incompleteProduct);
+
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe("Product was not created");
+  });
+});
