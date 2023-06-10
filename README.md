@@ -36,6 +36,24 @@ npm test
 
 This will run the Jest test suite and watch for changes.
 
+### Testing Coverage
+
+The testing coverage is as follows:
+
+Global: 65.21%
+
+- Controllers: 62.96%
+- Models: 100%
+- Services: 57.14%
+
+To generate a coverage report, use the following command:
+
+```bash
+npm run test:coverage
+```
+
+This will generate a coverage report in the `coverage` folder.
+
 ## 📚 Dependencies
 
 The backend uses the following dependencies:
