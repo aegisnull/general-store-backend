@@ -1,8 +1,15 @@
 import http from "k6/http";
 import { check, fail } from "k6";
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
+
+export function handleSummary(data) {
+  return {
+    "summary.html": htmlReport(data),
+  };
+}
 
 export let options = {
-  vus: 50,
+  vus: 180,
   duration: "5s",
 };
 
