@@ -28,3 +28,7 @@ exports.updateProduct = async (id, productData) => {
     .lean()
     .exec();
 };
+
+exports.deleteProduct = async (id) => {
+  return await Product.findByIdAndDelete(id).lean().exec();
+};

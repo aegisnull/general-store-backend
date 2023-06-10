@@ -40,6 +40,26 @@ describe("When calling update Product Controller", () => {
     ProductService.updateProduct = jest.fn().mockResolvedValue(updatedProduct);
   });
 
+  test("Should call ProductService.getProducts and get all products", async () => {
+    // Act
+    await ProjectController.getProducts(req, res);
+
+    // Assert
+    expect(ProductService.getProducts).toHaveBeenCalled();
+  });
+
+  test("In case of failure, should call res.status with a 500 status code", async () => {
+    // Arrange
+    const error = new Error();
+    ProductService.getProducts = jest.fn().mockRejectedValue(error);
+
+    // Act
+    await ProjectController.getProducts(req, res);
+
+    // Assert
+    expect(res.status).toHaveBeenCalledWith(500);
+  });
+
   test("Then it should call ProductService.updateProduct with id and productData", async () => {
     // Act
     await ProjectController.updateProduct(req, res);

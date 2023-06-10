@@ -60,3 +60,21 @@ describe("When calling the ProductService method", () => {
     expect(result).toEqual(updatedProduct);
   });
 });
+
+describe("When calling the product delete method", () => {
+  let id;
+
+  beforeEach(() => {
+    id = chance.string();
+    Product.findByIdAndDelete = jest.fn().mockReturnThis();
+    Product.exec = jest.fn().mockResolvedValue();
+  });
+
+  test("should call deleteProduct with an ID property", async () => {
+    // Arrange
+    await ProductService.deleteProduct(id);
+
+    // Assert
+    expect(Product.findByIdAndDelete).toHaveBeenCalledWith(id);
+  });
+});
