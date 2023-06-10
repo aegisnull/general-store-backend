@@ -40,9 +40,9 @@ This will run the Jest test suite and watch for changes.
 
 The testing coverage is as follows:
 
-Global: 83.09%
+Global: 88.73%
 
-- app.js: 70.58%
+- app.js: 94.11%
 
 - Controllers: 81.48%
 - Models: 100%
