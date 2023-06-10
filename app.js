@@ -12,12 +12,14 @@ app.use("/products", ProductRoutes);
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.DATABASE_URL);
-    app.listen(process.env.PORT, () => {
-      console.log("Server is running");
-    });
   } catch (error) {
     console.log("Failed to connect to MongoDB", error);
   }
 };
 
-connectDB();
+const server = app.listen(process.env.PORT, () => {
+  console.log(`Server is running at port ${process.env.PORT}`);
+  connectDB();
+});
+
+module.exports = { app, server };
