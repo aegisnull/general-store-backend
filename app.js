@@ -5,11 +5,13 @@ const ProductRoutes = require("./src/routes/products");
 const app = express();
 require("dotenv").config();
 const OrderRoutes = require("./src/routes/orders");
+const UserRoutes = require("./src/routes/users");
 
 app.use(cors());
 app.use(express.json());
 app.use("/products", ProductRoutes);
 app.use("/orders", OrderRoutes);
+app.use("/users", UserRoutes);
 
 const connectDB = async () => {
   try {
