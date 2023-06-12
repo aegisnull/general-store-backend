@@ -45,3 +45,14 @@ exports.updateProduct = async (req, res) => {
     res.status(500).json({ message: "Product was not updated" });
   }
 };
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await ProductService.deleteProduct(id);
+    res.status(200).json({ message: "Product deleted" });
+  } catch (error) {
+    console.error("error", error);
+    res.status(500).json({ message: "Product was not deleted" });
+  }
+}
