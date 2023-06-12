@@ -7,7 +7,7 @@ exports.createOrder = async (orderData) => {
 
 exports.getOrders = async () => {
   try {
-    const orders = await Order.find().lean().exec();
+    let orders = await Order.find().lean().exec();
     return orders;
   } catch (error) {
     throw new Error("Failed to retrieve orders.");

@@ -13,7 +13,7 @@ exports.createOrder = async (req, res) => {
 
 exports.getOrders = async (req, res) => {
   try {
-    const orders = await OrderService.getOrders();
+    let orders = await OrderService.getOrders();
     res.json({ orders: orders });
   } catch (error) {
     console.error("error", error);
