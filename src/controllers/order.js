@@ -10,3 +10,13 @@ exports.createOrder = async (req, res) => {
     res.status(400).json({ message: "Order was not created" });
   }
 };
+
+exports.getOrders = async (req, res) => {
+  try {
+    const orders = await OrderService.getOrders();
+    res.json({ orders: orders });
+  } catch (error) {
+    console.error("error", error);
+    res.status(500).json({ message: "Orders were not retrieved successfully" });
+  }
+};
