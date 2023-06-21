@@ -40,14 +40,27 @@ This will run the Jest test suite and watch for changes.
 
 The testing coverage is as follows:
 
-Global: 88.73%
-
-- app.js: 94.11%
-
-- Controllers: 81.48%
-- Models: 100%
-- Routes: 100%
-- Services: 85.71%
+| File                                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| ------------------------------------- | ------- | -------- | ------- | ------- | ----------------- |
+| All files                             | 63.41   | 0        | 45      | 63.41   |
+| general-store-backend                 | 95.23   | 100      | 100     | 95.23   |
+| app.js                                | 95.23   | 100      | 100     | 95.23   | 20                |
+| general-store-backend/src/controllers | 46.03   | 100      | 33.33   | 46.03   |
+| order.js                              | 21.42   | 100      | 0       | 21.42   | 4-10,15-20        |
+| product.js                            | 67.64   | 100      | 60      | 67.64   | 16-21,50-56       |
+| user.js                               | 20      | 100      | 0       | 20      | 4-10,15-21        |
+| general-store-backend/src/models      | 100     | 100      | 100     | 100     |
+| order.js                              | 100     | 100      | 100     | 100     |
+| product.js                            | 100     | 100      | 100     | 100     |
+| user.js                               | 100     | 100      | 100     | 100     |
+| general-store-backend/src/routes      | 100     | 100      | 100     | 100     |
+| orders.js                             | 100     | 100      | 100     | 100     |
+| products.js                           | 100     | 100      | 100     | 100     |
+| users.js                              | 100     | 100      | 100     | 100     |
+| general-store-backend/src/services    | 43.18   | 0        | 44.44   | 43.18   |
+| orders.js                             | 33.33   | 100      | 0       | 33.33   | 4-5,9-13          |
+| products.js                           | 85.71   | 100      | 80      | 85.71   | 9-10              |
+| users.js                              | 19.04   | 0        | 0       | 19.04   | 6-31,36-48        |
 
 To generate a coverage report, use the following command:
 
