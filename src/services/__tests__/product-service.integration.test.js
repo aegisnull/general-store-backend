@@ -1,15 +1,19 @@
 const request = require("supertest");
 const app = require("../../../app").app;
+const server = require("../../../app").server;
 const Product = require("../../models/product");
 
 const mongoose = require("mongoose");
 
 beforeAll(async () => {
   await mongoose.connect(process.env.DATABASE_URL);
+  // delete database
+  await mongoose.connection.db.dropDatabase();
 });
 
 afterAll(async () => {
   await mongoose.connection.close();
+  await server.close();
 });
 
 describe("GET /products", () => {
