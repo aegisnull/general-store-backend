@@ -13,6 +13,11 @@ app.use("/products", ProductRoutes);
 app.use("/orders", OrderRoutes);
 app.use("/users", UserRoutes);
 
+// default message for root path
+app.get("/", (req, res) => {
+  res.send("Welcome to the General Store API");
+});
+
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.DATABASE_URL);
