@@ -8,6 +8,11 @@ const chance = new Chance();
 
 jest.mock("../../models/product");
 
+afterAll(async () => {
+  await mongoose.connection.close();
+  await server.close();
+});
+
 describe("When calling the ProductService method", () => {
   let id, productData, updatedProduct;
 
