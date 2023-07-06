@@ -93,7 +93,6 @@ describe("POST /projects", () => {
       image:
         "https://cdn.shopify.com/s/files/1/0674/3411/9456/products/shop-8.png?v=1675662787&width=720",
       price: 12.99,
-      isNew: false,
       description:
         "Rich and flavorful coffee made from the finest Colombian coffee beans. It has a smooth, medium body and a deep, chocolatey flavor. It is perfect for those who enjoy a bold cup of coffee.",
     };
@@ -110,7 +109,6 @@ describe("POST /projects", () => {
       image:
         "https://cdn.shopify.com/s/files/1/0674/3411/9456/products/shop-8.png?v=1675662787&width=720",
       price: 12.99,
-      isNew: false,
       description:
         "Rich and flavorful coffee made from the finest Colombian coffee beans. It has a smooth, medium body and a deep, chocolatey flavor. It is perfect for those who enjoy a bold cup of coffee.",
     };
