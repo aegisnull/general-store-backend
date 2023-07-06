@@ -1,18 +1,11 @@
 const Chance = require("chance");
 
 const ProductService = require("../products");
-const server = require("../../../app").server;
-
 const Product = require("../../models/product");
 
 const chance = new Chance();
 
 jest.mock("../../models/product");
-
-afterAll(async () => {
-  await mongoose.connection.close();
-  await server.close();
-});
 
 describe("When calling the ProductService method", () => {
   let id, productData, updatedProduct;

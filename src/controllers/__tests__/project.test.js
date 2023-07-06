@@ -5,17 +5,11 @@ const ProjectController = require("../product");
 
 // Dependencies
 const ProductService = require("../../services/products");
-const server = require("../../../app").server;
 
 const chance = new Chance();
 
 // Mock the dependencies
 jest.mock("../../services/products");
-
-afterAll(async () => {
-  await mongoose.connection.close();
-  await server.close();
-});
 
 describe("When calling update Product Controller", () => {
   let id, productData, updatedProduct, req, res;
