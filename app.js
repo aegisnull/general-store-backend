@@ -2,10 +2,11 @@ const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const ProductRoutes = require("./src/routes/products");
-const app = express();
-require("dotenv").config();
 const OrderRoutes = require("./src/routes/orders");
 const UserRoutes = require("./src/routes/users");
+
+require("dotenv").config();
+const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -21,13 +22,16 @@ app.get("/", (req, res) => {
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.DATABASE_URL);
+    console.log("Connected to MongoDB");
   } catch (error) {
     console.log("Failed to connect to MongoDB", error);
+    process.exit(1); // Exit the application on connection error
   }
 };
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Server is running at port ${process.env.PORT}`);
+const PORT = process.env.PORT;
+const server = app.listen(PORT, () => {
+  console.log(`Server is running at port ${PORT}`);
   connectDB();
 });
 
