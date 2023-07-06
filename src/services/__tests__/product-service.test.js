@@ -1,6 +1,7 @@
 const Chance = require("chance");
 
 const ProductService = require("../products");
+const server = require("../../../app").server;
 
 const Product = require("../../models/product");
 

@@ -5,6 +5,7 @@ const ProjectController = require("../product");
 
 // Dependencies
 const ProductService = require("../../services/products");
+const server = require("../../../app").server;
 
 const chance = new Chance();
 
