@@ -1,7 +1,7 @@
 const Chance = require("chance");
 
 // What we want to test
-const ProjectController = require("../product");
+const ProductController = require("../product");
 
 // Dependencies
 const ProductService = require("../../services/products");
@@ -42,7 +42,7 @@ describe("When calling update Product Controller", () => {
 
   test("Should call ProductService.getProducts and get all products", async () => {
     // Act
-    await ProjectController.getProducts(req, res);
+    await ProductController.getProducts(req, res);
 
     // Assert
     expect(ProductService.getProducts).toHaveBeenCalled();
@@ -54,7 +54,7 @@ describe("When calling update Product Controller", () => {
     ProductService.getProducts = jest.fn().mockRejectedValue(error);
 
     // Act
-    await ProjectController.getProducts(req, res);
+    await ProductController.getProducts(req, res);
 
     // Assert
     expect(res.status).toHaveBeenCalledWith(500);
@@ -62,7 +62,7 @@ describe("When calling update Product Controller", () => {
 
   test("Then it should call ProductService.updateProduct with id and productData", async () => {
     // Act
-    await ProjectController.updateProduct(req, res);
+    await ProductController.updateProduct(req, res);
 
     // Assert
     expect(ProductService.updateProduct).toHaveBeenCalledWith(id, productData);
@@ -70,7 +70,7 @@ describe("When calling update Product Controller", () => {
 
   test("Should call res.status with a 200 status code", async () => {
     // Act
-    await ProjectController.updateProduct(req, res);
+    await ProductController.updateProduct(req, res);
 
     // Assert
     expect(res.status).toHaveBeenCalledWith(200);
@@ -78,7 +78,7 @@ describe("When calling update Product Controller", () => {
 
   test("Should call res.json with a success message and updated product", async () => {
     // Act
-    await ProjectController.updateProduct(req, res);
+    await ProductController.updateProduct(req, res);
 
     // Assert
     expect(res.json).toHaveBeenCalledWith({
@@ -93,7 +93,7 @@ describe("When calling update Product Controller", () => {
     ProductService.updateProduct = jest.fn().mockRejectedValue(error);
 
     // Act
-    await ProjectController.updateProduct(req, res);
+    await ProductController.updateProduct(req, res);
 
     // Assert
     expect(res.status).toHaveBeenCalledWith(500);
